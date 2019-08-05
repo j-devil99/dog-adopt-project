@@ -31,6 +31,45 @@
     </div>
   </section>
 
+  <!-- Filter -->
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <form action="{% url 'search' %}">
+          <!-- Form Row 1 -->
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <!-- <label class="sr-only">State</label>
+              <input type="text" name="state" class="form-control" placeholder="State" value="{{ values.state }}"> -->
+              <label class="sr-only">State</label>
+                <select name="state" class="form-control">
+                  <option selected="true" disabled="disabled">State (All)</option>
+                {% for key,value in state_choices.items %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+                </select>
+            </div>
+  
+            <div class="col-md-4 mb-3">
+              <!-- <label class="sr-only">Breed</label>
+              <input type="text" name="breed" class="form-control" placeholder="Breed" value="{{ values.breed }}"> -->
+              <label class="sr-only">Breed</label>
+                <select name="breed" class="form-control">
+                  <option selected="true" disabled="disabled">Breed (All)</option>
+                {% for key,value in breed_choices.items %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <button class="btn btn-secondary btn-block" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Pets -->
   <section id="listings" class="py-4">
     <div class="container">

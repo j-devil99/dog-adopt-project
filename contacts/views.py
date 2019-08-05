@@ -19,7 +19,7 @@ def contact(request):
       user_id = request.user.id
       has_contacted = Contact.objects.all().filter(pet_id=pet_id, user_id=user_id)
       if has_contacted:
-        messages.error(request, 'You have already made an inquiry for this listing')
+        messages.error(request, 'You have already made an inquiry for this pet')
         return redirect('/pets/'+pet_id)
 
     contact = Contact(pet=pet, pet_id=pet_id, name=name, email=email, phone=phone, message=message, user_id=user_id )
@@ -28,10 +28,10 @@ def contact(request):
 
     # Send email
     # send_mail(
-    #   'Property Listing Inquiry',
-    #   'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
+    #   'Pet Enquiry',
+    #   'There has been an inquiry for ' + pet + '. Sign into the admin panel for more info',
     #   'traversy.brad@gmail.com',
-    #   [realtor_email, 'techguyinfo@gmail.com'],
+    #   [shelter_email, 'techguyinfo@gmail.com'],
     #   fail_silently=False
     # )
 
