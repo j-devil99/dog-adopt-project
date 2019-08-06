@@ -32,7 +32,7 @@ def register(request):
           # return redirect('index')
           user.save()
           messages.success(request, 'You are now registered and can log in')
-          return redirect('login')
+          return redirect('logins')
     else:
       messages.error(request, 'Passwords do not match')
       return redirect('register')
@@ -52,7 +52,7 @@ def login(request):
       return redirect('dashboard')
     else:
       messages.error(request, 'Invalid credentials')
-      return redirect('login')
+      return redirect('logins')
   else:
     return render(request, 'accounts/login.html')
 

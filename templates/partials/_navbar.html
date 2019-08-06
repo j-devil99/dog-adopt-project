@@ -72,13 +72,13 @@
                 <i class="fas fa-user-plus"></i> Register</a>
             </li>
             <li
-            {% if 'login' in request.path %}
+            {% if 'logins' in request.path %}
               class="nav-item active mr-3"
             {% else %}
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link" href="{% url 'login' %}">
+              <a class="nav-link" href="{% url 'logins' %}">
                 <i class="fas fa-sign-in-alt"></i>
 
                 Login</a>
