@@ -25,13 +25,15 @@ SECRET_KEY = '696xhekh)i+xzdtlepuen9wu1yzl9=d+=q+_4wa051gt#7618p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = [
 
+    'django.contrib.sites',
     'django.contrib.humanize',
     'shelters.apps.SheltersConfig',
     'contacts.apps.ContactsConfig',
@@ -43,11 +45,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
+
+AUTHENTICATION_BACKENDS = [
+        'social_core.backends.google.GoogleOAuth2',
+        'social_core.backends.facebook.FacebookOAuth2',
+        'django.contrib.auth.backends.ModelBackend',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -68,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -82,7 +94,7 @@ WSGI_APPLICATION = 'dogadopt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'adoptdb',
+        'NAME': 'adoptdogdb',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'
@@ -107,6 +119,29 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '2279506005697766'
+SOCIAL_AUTH_FACEBOOK_SECRET ='0cc5a33ab0e1d12b79edc723128fa457'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {   
+  'fields': 'id, name, email'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [           
+        ('name', 'name'),
+        ('email', 'email'),
+]
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/accounts/logins'
+
+LOGIN_URL = 'logins'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'home'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dogadopt2019@gmail.com'
+EMAIL_HOST_PASSWORD = 'DjangoProject99!'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
 # Internationalization

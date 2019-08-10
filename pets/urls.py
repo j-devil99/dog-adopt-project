@@ -5,5 +5,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='pets'),
     path('<int:pet_id>', views.pet, name='pet'),
-    path('search', views.search, name='search'),
+    path('search', views.search, name='psearch'),
 ]

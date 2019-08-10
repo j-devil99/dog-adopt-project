@@ -27,13 +27,13 @@ def contact(request):
     contact.save()
 
     # Send email
-    # send_mail(
-    #   'Pet Enquiry',
-    #   'There has been an inquiry for ' + pet + '. Sign into the admin panel for more info',
-    #   'traversy.brad@gmail.com',
-    #   [shelter_email, 'techguyinfo@gmail.com'],
-    #   fail_silently=False
-    # )
+    send_mail(
+      'Pet Enquiry',
+      'You made an enquiry for ' + pet + '. Your response has been sent to the respective shelter.',
+      'dogadopt2019@gmail.com',
+      [email],
+      fail_silently=False
+    )
 
     messages.success(request, 'Your request has been submitted, a shelter representative will get back to you soon')
     return redirect('/pets/'+pet_id)
