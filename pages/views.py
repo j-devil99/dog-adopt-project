@@ -14,3 +14,6 @@ def home(request):
     }
 
     return render(request, 'pages/index.html', context)
+
+def about(request):
+    return render(request, 'pages/about.html')
