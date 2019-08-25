@@ -31,7 +31,7 @@ def contact(request):
       'Pet Enquiry',
       'You made an enquiry for ' + pet + '. Your response has been sent to the respective shelter.',
       'dogadopt2019@gmail.com',
-      [email],
+      [email, shelter_email],
       fail_silently=False
     )
 
