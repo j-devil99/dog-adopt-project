@@ -21,8 +21,8 @@ for key in sorted(u_state_choices.keys()):
 for key in sorted(u_breed_choices.keys()):
     breed_choices[key] = u_breed_choices[key]
 
-print(state_choices)
-print(breed_choices)
+# print(state_choices)
+# print(breed_choices)
 
 
 

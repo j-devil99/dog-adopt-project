@@ -7,7 +7,7 @@ from .choices import state_choices, breed_choices
 from .models import Pet
 
 def index(request):
-  pets = Pet.objects.order_by('-list_date')
+  pets = Pet.objects.order_by('-list_date').filter(is_published = True)
 
   paginator = Paginator(pets, 6)
   page = request.GET.get('page')
@@ -24,7 +24,7 @@ def index(request):
   
 
 def search(request):
-  queryset_list = Pet.objects.order_by('-list_date')
+  queryset_list = Pet.objects.order_by('-list_date').filter(is_published = True)
 
   # State
   if 'state' in request.GET:
