@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = [
         'social_core.backends.google.GoogleOAuth2',
+        'social_core.backends.google.OpenIdAuth',
+        'social_core.backends.google.GoogleOpenId',
         'social_core.backends.facebook.FacebookOAuth2',
         'django.contrib.auth.backends.ModelBackend',
     ]
@@ -131,6 +133,10 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
         ('email', 'email'),
 ]
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/accounts/logins'
+
+# SOCIAL_AUTH_GOOGLE_AUTH2_KEY = '902285044523-s7b8nrrelngddm6b31kovfeb29fc82ba.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_AUTH2_SECRET = 'USHcvZqFBmSMQXy05ZPr7epp'
+
 
 LOGIN_URL = 'logins'
 LOGIN_REDIRECT_URL = 'dashboard'

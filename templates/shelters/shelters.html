@@ -67,28 +67,31 @@
           {% for shelter in shelters %}
             <!-- Shelter 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview" style="background-color: #F1FAEE">
-                <img class="card-img-top" src="{{ shelter.photo.url }}" alt="">
-                <div class="card-body">
-                  <div class="listing-heading text-center">
-                    <h4 class="text-info">{{ shelter.name }}</h4>
-                    <p class="text-secondary">
-                      <i class="fas fa-map-marker-alt"></i> {{ shelter.state }}</p>
+              <div class="card-deck">
+
+                <div class="card listing-preview" style="background-color: #F1FAEE">
+                  <img class="card-img-top" src="{{ shelter.photo.url }}" alt="">
+                  <div class="card-body">
+                    <div class="listing-heading text-center">
+                      <h4 class="text-info">{{ shelter.name }}</h4>
+                      <p class="text-secondary">
+                        <i class="fas fa-map-marker-alt"></i> {{ shelter.state }}</p>
+                    </div>
+                    <hr>
+                    <div class="row py-2 text-dark">
+                      <div class="col-5">
+                        <i class="fas fa-phone"></i> Phone: {{ shelter.phone }}</div>
+                      <div class="col-7">
+                        <i class="fas fa-envelope"></i> Email: {{ shelter.email }}</div>
+                    </div>
+                    <hr>
+                    <div class="row py-2 text-dark">
+                      <div class="col-6">
+                        <i class="fas fa-clock"></i> Registered: {{ shelter.reg_date | timesince }} ago</div>
+                    </div>
+                    <hr>
+                    <a href="{% url 'shelter' shelter.id %}" class="btn btn-block btn-info" >More Info</a>
                   </div>
-                  <hr>
-                  <div class="row py-2 text-dark">
-                    <div class="col-5">
-                      <i class="fas fa-phone"></i> Phone: {{ shelter.phone }}</div>
-                    <div class="col-7">
-                      <i class="fas fa-envelope"></i> Email: {{ shelter.email }}</div>
-                  </div>
-                  <hr>
-                  <div class="row py-2 text-dark">
-                    <div class="col-6">
-                      <i class="fas fa-clock"></i> Registered: {{ shelter.reg_date | timesince }} ago</div>
-                  </div>
-                  <hr>
-                  <a href="{% url 'shelter' shelter.id %}" class="btn btn-block btn-info" >More Info</a>
                 </div>
               </div>
             </div>
