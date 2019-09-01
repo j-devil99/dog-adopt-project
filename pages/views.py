@@ -7,7 +7,7 @@ from pets.models import Pet
 # Create your views here.
 
 def home(request):
-    pets = Pet.objects.order_by('-list_date')[:3]
+    pets = Pet.objects.order_by('-list_date').filter(is_published = True)[:3]
 
     context = {
         'pets': pets
